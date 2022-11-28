@@ -1,5 +1,5 @@
 import argparse
-import requests as twojastara
+import requests
 import pandas as pd
 import plotly.express as px
 import json
@@ -22,7 +22,7 @@ if not ticker:
 url = "https://alpha-vantage.p.rapidapi.com/query"
 querystring = {"function":"TIME_SERIES_DAILY","symbol":ticker.upper(),"outputsize":"compact","datatype":"json"}
 headers = {"X-RapidAPI-Host": "alpha-vantage.p.rapidapi.com", "X-RapidAPI-Key": api_key}
-response = twojastara.request("GET", url, headers=headers, params=querystring)
+response = requests.request("GET", url, headers=headers, params=querystring)
 
 ticker = json.loads(response.text)
 time_series = ticker['Time Series (Daily)']
